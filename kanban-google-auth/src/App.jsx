@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import googleOneTap from "google-one-tap";
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
@@ -18,20 +18,24 @@ function App() {
         cancel_on_tap_outside: true,
       });
     }
-  }, [user]);
+  }, []);
 
   return (
     <div>
       <h1>Kanban Board</h1>
 
       {user ? (
-        <div>
-          <img src={user.picture} width="60" />
-          <h3>{user.name}</h3>
-          <button onClick={logout}>Cerrar sesión</button>
-        </div>
+        <>
+          <div>
+            <img src={user.picture} width="60" />
+            <h3>{user.name}</h3>
+            <button onClick={logout}>Cerrar sesión</button>
+          </div>
+
+          <KanbanBoard />
+        </>
       ) : (
-        <p>Inicia sesión para acceder</p>
+        <p>Inicia sesión para acceder al tablero</p>
       )}
     </div>
   );
