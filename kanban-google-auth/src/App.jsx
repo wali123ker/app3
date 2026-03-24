@@ -13,7 +13,7 @@ function App() {
     googleOneTap({
       client_id: "269691873006-8887diih7ljcabf8pk9sqacjd9hpkla8.apps.googleusercontent.com",
       callback: (response) => {
-        console.log("LOGIN OK", response); // 👈 DEBUG
+        console.log("LOGIN OK", response);
         const decoded = jwtDecode(response.credential);
         setUser(decoded);
       },
